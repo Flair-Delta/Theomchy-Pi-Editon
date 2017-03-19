@@ -1,0 +1,49 @@
+[ 능력 추가 가이드 ]
+
+★ 신들의 전쟁은 제온 님의 능력자 플러그인과 다르게 대부분 수동입니다. 제가 능력 코드 정보만 자동화해두었습니다.
+★ 신들의 전쟁은 칠각별(septagram) 님께서 제작하셨으며, 제가 일부 수정하여 배포하고 있습니다.
+
+[1~2] 기본 작업입니다.
+1. septagram.Theomachy.Ability.GOD (또는 HUMAN) 패키지에 클래스를 생성합니다.
+2. 해당 클래스를 Ability 클래스에 상속시킵니다.
+
+[3~5] 능력 설명 작성을 위한 작업입니다.
+3. String 배열인 des를 private final static으로 선언한 뒤에 배열 하나에 설명 한 줄로 작성합니다.
+
+예시) private final static String[] des= {"술의 신입니다.",
+			             "10% 확률로 자신을 공격한 10초간 상대의 시야를 어지럽히며",
+			             "동시에 상대의 이동속도, 공격력을 낮춥니다."};
+
+4. 클래스 내에서 나는 오류를 모두 처리합니다.
+5. public (클래스) 내부에 this.rank=-1(F), 1(C), 2(B), 3(A), 4(S), 액티브(Active) 타입이라면 this.cool1~2=(int 변수), this.sta1~2=(int 변수); 꼴로 입력합니다.
+
+에시) public Poseidon(String playerName) {
+
+	    super(playerName,"포세이돈", 2, true, true, false, des);
+	    Theomachy.log.info(playerName+abilityName);
+		
+	    this.cool1=coolTime0;
+	    this.sta1=stack0;
+		
+	    this.rank=4;
+
+          }
+
+6. 이제 다른 클래스들을 따라하면서 능력을 만들어보세요.
+
+[7~9] 능력 등록을 위한 작업니다.
+7. septagram.Theomachy.Handler.CommandModule 패키지 내부에 AbilitySet 이라는 클래스가 있습니다. AbilitySet의 abilityAssignment에서 맨 마지막에 다음과 같이 작성합니다.
+
+else if (abilityCode == (능력 코드))
+    GameData.PlayerAbility.put(playerName, new (1에서 만들었던 클래스 이름) (playerName));
+
+8. septagram.Theomachy.Utility 패키지 내부에 ReturnAbilityName 이라는 클래스가 있습니다. switch 문에 다음과 같이 추가합니다.
+case (능력 코드) : e="(능력의 한글 이름)"; break;
+
+참고) ReturnAbilityName에 등록되어있는 능력들은 자동으로 능력 코드 정보가 들어가며,  기본적으로 블랙리스트에서 쓰입니다.
+
+9. septagram.Theomachy.DB 패키지 내부에 AbilityData 라는 클래스가 있습니다. 각각의 Ability Number를 증가시킵니다.
+참고) 인간을 추가했다면 ABILITY_NUMBER와 HUMAN_ABILITY_NUMBER에 1씩 증가시키고,
+          신을 추가했다면 ABILITY_NUMBER와 GOD_ABILITY_NUMBER에 1씩 증가시키면 됩니다.
+
+10. Export 한 뒤에 마음껏 배포하셔도 됩니다.
