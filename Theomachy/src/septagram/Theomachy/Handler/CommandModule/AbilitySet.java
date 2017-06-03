@@ -78,7 +78,7 @@ public class AbilitySet
 	private static void RandomAssignment(CommandSender sender)
 	{
 		
-		Player p=(Player) sender;
+		CommandSender p=(Player) sender;
 		
 		if (!GameData.PlayerAbility.isEmpty())
 		{
@@ -101,6 +101,7 @@ public class AbilitySet
 			String playerName = playerlist[i].getName();
 			abiltiyAssignment(rn[i],playerName,p);
 		}
+		
 		Bukkit.broadcastMessage("모두에게 능력이 적용되었습니다.");
 		Bukkit.broadcastMessage("/t help 로 확인해보세요.");
 		if (length!=playerlist.length)
@@ -133,7 +134,7 @@ public class AbilitySet
 		}
 	}
 	
-	public static void abiltiyAssignment(int abilityCode, String playerName, Player p)
+	public static void abiltiyAssignment(int abilityCode, String playerName, CommandSender p)
 	{
 		if (abilityCode == 1)
 			GameData.PlayerAbility.put(playerName, new Zeus(playerName));
@@ -165,6 +166,12 @@ public class AbilitySet
 			GameData.PlayerAbility.put(playerName, new Eris(playerName));
 		else if (abilityCode == 15)
 			GameData.PlayerAbility.put(playerName, new Morpious(playerName));
+		else if (abilityCode == 16)
+			GameData.PlayerAbility.put(playerName, new Aeolus(playerName));
+		else if (abilityCode == 17)
+			GameData.PlayerAbility.put(playerName, new Akasha(playerName));
+		else if (abilityCode == 18)
+			GameData.PlayerAbility.put(playerName, new Horeundal(playerName));
 		
 		else if (abilityCode == 101)
 			GameData.PlayerAbility.put(playerName, new Archer(playerName));
@@ -226,6 +233,10 @@ public class AbilitySet
 			GameData.PlayerAbility.put(playerName, new PokeGo(playerName));
 		else if (abilityCode == 130)
 			GameData.PlayerAbility.put(playerName, new Darkness(playerName));
+		else if (abilityCode == 131)
+			GameData.PlayerAbility.put(playerName, new Gasolin(playerName));
+		else if (abilityCode == 132)
+			GameData.PlayerAbility.put(playerName, new Zet(playerName));
 		
 		else
 		{

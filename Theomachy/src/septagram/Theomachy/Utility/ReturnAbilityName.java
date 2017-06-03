@@ -21,6 +21,9 @@ public class ReturnAbilityName {
 		case 13: e="아프로디테"; break;
 		case 14: e="에리스"; break;
 		case 15: e="모르피우스"; break;
+		case 16: e="아이올로스"; break;
+		case 17: e="아카샤"; break;
+		case 18: e="호른달"; break;
 		
 		case 101: e="아처"; break;
 		case 102: e="광부";break;
@@ -52,6 +55,8 @@ public class ReturnAbilityName {
 		case 128: e="메구밍";break;
 		case 129: e="포켓몬고";break;
 		case 130: e="다크니스";break;
+		case 131: e="가솔린기관";break;
+		case 132: e="제트기관";break;
 		
 		default: e=""; break;
 		}
