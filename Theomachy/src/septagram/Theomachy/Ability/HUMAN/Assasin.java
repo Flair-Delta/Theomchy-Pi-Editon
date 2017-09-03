@@ -2,6 +2,7 @@ package septagram.Theomachy.Ability.HUMAN;
 
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -24,24 +25,21 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Assasin extends Ability
 {
-	private final int coolTime1=1;
-	private final int coolTime2=20;
-	private final int material=4;
-	private final int stack1=0;
-	private final int stack2=1;
-	private final static String[] des= {"민첩한 몸놀림을 가지고있는 능력입니다.",
-			   "점프한 후 능력을 사용하면 현재 보는 방향으로 점프를 한 번 더 할 수 있습니다.",
-			   "좌클릭으로 해당방향으로 점프를 합니다.",
-			   "우클릭으로 주변에 있는 적의 등으로 순간이동 합니다."};
+	private final static String[] des= {
+			   "암살자는 민첩한 몸놀림을 가지는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"더블 점프",
+			   "점프한 후 현재 보는 방향으로 점프를 한 번 더 할 수 있습니다.",
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"기습",
+			   "주변에 있는 적의 등으로 순간이동 합니다."};
 	
 	public Assasin(String playerName)
 	{
 		super(playerName,"암살자", 108, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=1;
+		this.cool2=15;
+		this.sta1=0;
+		this.sta2=15;
 		
 		this.rank=2;
 	}
@@ -69,10 +67,10 @@ public class Assasin extends Ability
 		Block b = temp.add(0,-1,0).getBlock();
 		if ((b.getTypeId()==0) || (b.getTypeId()==78) || (b.getTypeId()==44))
 		{	
-			if ((!CoolTime.COOL0.containsKey(playerName+"0") && (PlayerInventory.ItemCheck(player, material, stack1))))
+			if ((!CoolTime.COOL0.containsKey(playerName+"0") && (PlayerInventory.ItemCheck(player, 4, sta1))))
 			{
-			CoolTime.COOL0.put(playerName+"0", coolTime1);
-			PlayerInventory.ItemRemove(player, material, stack1);
+			CoolTime.COOL0.put(playerName+"0", cool1);
+			PlayerInventory.ItemRemove(player, 4, sta1);
 			World world = player.getWorld();
 			Location location = player.getLocation();
 			Vector v = player.getEyeLocation().getDirection();
@@ -85,7 +83,7 @@ public class Assasin extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta2))
 		{
 			boolean flag = true;
 			List<Entity> entityList = player.getNearbyEntities(10, 10, 10);
@@ -99,7 +97,7 @@ public class Assasin extends Ability
 					String playerTeamName = GameData.PlayerTeam.get(player.getName());
 					if ((targetTeamName == null) || !(targetTeamName.equals(playerTeamName)))
 					{
-						Skill.Use(player, material, stack2, 2, coolTime2);
+						Skill.Use(player, 4, sta2, 2, cool2);
 						Location fakeLocation = player.getLocation();
 						Location location = target.getLocation();
 						World world = player.getWorld();

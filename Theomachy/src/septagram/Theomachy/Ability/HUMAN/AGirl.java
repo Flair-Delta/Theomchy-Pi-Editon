@@ -15,10 +15,11 @@ import septagram.Theomachy.Utility.Skill;
 
 public class AGirl extends Ability{
 
-	private final static String[] des= {"귀여움으로 상대를 굶어죽이는 능력입니다.",
-											  "블레이즈 로드 좌클릭 시 주변 5칸 이내의",
-											  "플레이어를 자신의 앞으로 끌어옵니다.",
-											  "끌려 온 플레이어들의 배고픔 지수는 0이 됩니다."};
+	private final static String[] des= {
+			"안락소녀는 귀여움으로 상대를 아사시킵니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"가짜 연약함",
+			"주변의 적을 자신의 앞으로 끌어옵니다.",
+			"끌려 온 플레이어들의 배고픔 지수는 0이 됩니다."};
 	
 	public AGirl(String playerName) {
 		super(playerName, "안락소녀", 127, true, false, false, des);

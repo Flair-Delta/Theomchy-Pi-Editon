@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -17,23 +18,21 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Archer extends Ability
 {
-	private final int coolTime1=20;
-	private final int coolTime2=60;
-	private final int material=4;
-	private final int stack1=7;
-	private final int stack2=15;
-	private final static String[] des= {"궁수입니다.",
+	private final static String[] des= {
+			   "궁수입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"정확함",
 			   "활 공격 데미지가 1.4배로 상승합니다.",
-			   "좌클릭으로 화살을 얻을 수 있으며 우클릭으로 활을 얻을 수 있습니다."};
+			   ChatColor.AQUA+"【일반/고급】 "+ChatColor.WHITE+"화살/활 생성",
+			   "일반능력으로 화살을, 고급 능력으로 활을 만듭니다."};
 	
 	public Archer(String playerName)
 	{
 		super(playerName,"아처", 101, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=20;
+		this.cool2=60;
+		this.sta1=7;
+		this.sta2=15;
 		
 		this.rank=2;
 	}
@@ -57,9 +56,9 @@ public class Archer extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, material, stack1))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack1, 1, coolTime1);
+			Skill.Use(player, 4, sta1, 1, cool1);
 			World world = player.getWorld();
 			Location location = player.getLocation();
 			world.dropItem(location, new ItemStack(Material.ARROW.getId(), 1));
@@ -68,9 +67,9 @@ public class Archer extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta2))
 		{
-			Skill.Use(player, material, stack2, 2, coolTime2);
+			Skill.Use(player, 4, sta2, 2, cool2);
 			World world = player.getWorld();
 			Location location = player.getLocation();
 			world.dropItem(location, new ItemStack(Material.BOW.getId(), 1));

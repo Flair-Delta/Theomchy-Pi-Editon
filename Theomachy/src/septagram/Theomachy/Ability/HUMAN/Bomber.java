@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -15,11 +16,11 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Bomber extends Ability
 {
-	private final int coolTime0=30;
-	private final int material=4;
-	private final int stack0=2;
+
 	private Location tntLocation;
-	private final static String[] des= {"폭발을 다루는 능력입니다.",
+	private final static String[] des= {
+			   "봄버는 폭발을 다루는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"폭파",
 			   "좌클릭으로 해당 위치에 보이지 않는 TNT를 설치하며" ,
 			   "우클릭으로 어디서든 폭발시킬 수 있습니다."};
 	
@@ -28,8 +29,8 @@ public class Bomber extends Ability
 		super(playerName,"봄버", 105, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=30;
+		this.sta1=25;
 		
 		this.rank=3;
 	}
@@ -65,11 +66,11 @@ public class Bomber extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
 			if (tntLocation != null)
 			{
-				Skill.Use(player, material, stack0, 0, coolTime0);
+				Skill.Use(player, 4, sta1, 0, cool1);
 				World world = player.getWorld();
 				world.createExplosion(tntLocation, 2.0f, true);
 				tntLocation = null;

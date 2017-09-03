@@ -19,14 +19,14 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Bee extends Ability{
 
-	public final static String[] des= {"벌들의 제왕입니다.",
-			"자신을 공격해 온 적에게 75%의 확률로 독을 안겨줍니다.",
-			"폼산을 이용해서 상대를 유혹할 수도 있습니다.",
-			"능력 사용 시 목표로 지정해 둔 상대를 자신의 위치로 끌어옵니다.",
+	public final static String[] des= {
+			"여왕벌은 벌들의 제왕입니다.",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"공격",
+			"자신을 공격해 온 적에게 75%의 확률로 중독되게 합니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"페로몬",
+			"목표로 지정해 둔 상대를 자신의 위치로 끌어옵니다.",
 			"목표 지정: /x <대상>"};
-	
-	public final int coolTime0=180;
-	public final int stack0=32;
+
 
 	private String abilitytarget;
 	
@@ -35,8 +35,8 @@ public class Bee extends Ability{
 		
 		this.rank=3;
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=180;
+		this.sta1=32;
 	}
 
 	public void T_Active(PlayerInteractEvent event)
@@ -55,7 +55,7 @@ public class Bee extends Ability{
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, stack0))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
 			if(abilitytarget!=null){
 				if(player.getName().equals(abilitytarget)){
@@ -64,10 +64,10 @@ public class Bee extends Ability{
 				
 				else{
 					Player target = GameData.OnlinePlayer.get(abilitytarget);
-					Skill.Use(player, 4, stack0, 0, coolTime0);
+					Skill.Use(player, 4, sta1, 0, cool1);
 					
-					player.sendMessage(ChatColor.YELLOW+" 폼산 "+ChatColor.WHITE+"을 이용하여 목표를 유혹했습니다!");
-					target.sendMessage(ChatColor.YELLOW+" 폼산 "+ChatColor.WHITE+"에 유혹당했습니다!");
+					player.sendMessage(ChatColor.YELLOW+" 페로몬 "+ChatColor.WHITE+"을 이용하여 목표를 유혹했습니다!");
+					target.sendMessage(ChatColor.YELLOW+" 페로몬 "+ChatColor.WHITE+"에 유혹당했습니다!");
 					
 					target.teleport(player);
 				}

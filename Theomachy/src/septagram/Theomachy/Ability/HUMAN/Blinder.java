@@ -3,6 +3,7 @@ package septagram.Theomachy.Ability.HUMAN;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -19,21 +20,20 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Blinder extends Ability
 {
-	private final int coolTime0=30;
-	private final int material=4;
-	private final int stack0=10;
-	private final static String[] des= {"상대방의 시야를 가리는 능력입니다.",
-			   "자신을 공격한 상대는 일정 확률로 시야가 가려집니다. (4초 지속)",
-			   "블레이즈 로드를 이용한 능력으로 자신의 팀원을 제외한",
-			   "10칸 안에 있는 유저를 블라인드 할 수 있습니다. (8초 지속)"};
+	private final static String[] des= {
+			   "블라인더는 상대방의 시야를 가리는 능력입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"블라인딩 Ⅰ",
+			   "자신을 공격한 상대는 일정 확률로 시야가 가려집니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"블라인딩 Ⅱ",
+			   "주변의 적의 시야를 가립니다."};
 	
 	public Blinder(String playerName)
 	{
 		super(playerName,"블라인더", 110, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=30;
+		this.sta1=10;
 		
 		this.rank=3;
 	}
@@ -54,13 +54,13 @@ public class Blinder extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
 			List<Player> targetList = GetPlayerList.getNearByNotTeamMembers(player, 5, 5, 5);
 			if (!targetList.isEmpty())
 			{
-				Skill.Use(player, material, stack0, 0, coolTime0);
-				player.sendMessage("자신의 팀원을 제외한 모든 플레이어를 블라인드 합니다.");
+				Skill.Use(player, 4, sta1, 0, cool1);
+				player.sendMessage("주변의 적의 시야를 가립니다.");
 				for (Player e : targetList)
 				{
 					e.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 160, 0), true);

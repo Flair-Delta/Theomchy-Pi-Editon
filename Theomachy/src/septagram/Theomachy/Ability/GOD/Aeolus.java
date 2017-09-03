@@ -24,11 +24,11 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Aeolus extends Ability{
 	
-	private final static String[] des= {"폭풍과 바람의 신입니다.",
-			"일반 능력으로 주변 20칸 내에 있는 아군에게 상쾌한 바람을",
-			"쐬게 하여 신속, 재생 버프를 받게 합니다.",
-			"고급 능력으로 주변 10칸 내에 있는 적군을 밀쳐내며,",
-			"구속, 나약 버프를 5초간 받게 합니다."};
+	private final static String[] des= {"아이올로스는 폭풍과 바람의 신입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"자연 바람",			
+			"주변에 있는 아군에게 상쾌한 바람으로 빠르고 건강하게 합니다.",
+			ChatColor.RED+"【고급】 "+ChatColor.WHITE+"태풍",
+			"주변에 있는 적을 강한 바람으로 밀어내고 느리고 약하게 합니다."};
 	
 	public Aeolus(String playerName)
 	{

@@ -18,11 +18,12 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Akasha extends Ability{
 
-	private final static String[] des= {"고통과 향락의 여신입니다.",
-			"일반 능력으로 주변 20칸 내에 있는 아군에게 향락을",
-			"선사하여 걸음을 빨리하고 체력을 재생합니다.",
-			"고급 능력으로 주변 10칸 내에 있는 적군에게 멀미를,",
-			"주고, 체력을 닳게 합니다."};
+	private final static String[] des= {
+			"아카샤는 고통과 향락의 여신입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"향락",
+			"주변에 있는 아군에게 기쁨을 주어 빠르고 건강하게 합니다.",
+			ChatColor.RED+"【고급】 "+ChatColor.WHITE+"고통",
+			"주변에 있는 적군에게 고통을 주어 혼란하게 합니다."};
 	
 	public Akasha(String playerName)
 	{

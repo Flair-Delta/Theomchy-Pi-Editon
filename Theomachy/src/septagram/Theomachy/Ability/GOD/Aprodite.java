@@ -17,22 +17,19 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Aprodite extends Ability{
 	
-	private final static String[] des= {"미의 신입니다.",
-			   "가까이 있는 사람들을 당신의 미로 끌어올 수 있습니다.",
-			   "일반능력으로 주변 20칸 이내의 다른 팀의 ",
-			   "사람들을 자신의 위치로 끌어옵니다. ",
-			   "단, 자신이 블럭에 서 있어야 하고, 웅크리고 ",
-			   "있으면 발동되지 않습니다."};
-	private final int coolTime0=500;
-	private final int stack0=64;
+	private final static String[] des= {
+			  "아프로디테는 미의 신입니다.",
+			  ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"매혹",
+			   "가까이 있는 사람들을 끌어올 수 있습니다.",
+			   "자신이 블록 위에 서 있고 웅크리지 않아야 발동합니다."};
 	
 	public Aprodite(String playerName)
 	{
 		super(playerName, "아프로디테", 13, true, false, false, des);
 		Theomachy.log.info(playerName+"아프로디테");
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=500;
+		this.sta1=64;
 		
 		this.rank=4;
 	}
@@ -52,9 +49,9 @@ public class Aprodite extends Ability{
 	}
 
 	private void leftAction(Player player) {
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, stack0)) {
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1)) {
 			if(!player.isSneaking() && !player.getLocation().add(0, -1, 0).getBlock().getType().equals(Material.AIR)) {
-				Skill.Use(player, 4, stack0, 0, coolTime0);
+				Skill.Use(player, 4, sta1, 0, cool1);
 				try {
 					List<Player> list=GetPlayerList.getNearByNotTeamMembers(player, 20, 20, 20);
 				

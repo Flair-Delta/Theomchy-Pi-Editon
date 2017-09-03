@@ -77,6 +77,7 @@ public class Ability
 	{
 		sender.sendMessage("타겟을 사용하는 능력이 아닙니다.");
 	}
+	
 	public void T_Passive(ProjectileLaunchEvent event, Player player){}
 
 	public void T_Passive(EntityExplodeEvent event) {}

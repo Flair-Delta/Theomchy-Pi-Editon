@@ -16,6 +16,7 @@ import septagram.Theomachy.Handler.CommandModule.Help;
 import septagram.Theomachy.Handler.CommandModule.Spawn;
 import septagram.Theomachy.Handler.CommandModule.Team;
 import septagram.Theomachy.Handler.CommandModule.TeamInfo;
+import septagram.Theomachy.Handler.CommandModule.Tip;
 
 public class CommandHandler
 {
@@ -45,6 +46,8 @@ public class CommandHandler
 			GUISetting.Module(sender);
 		else if (data[0].equals("con"))
 			Convi.Module(sender);
+		else if (data[0].equals("tip"))
+			Tip.Module(sender);
 		else
 			sender.sendMessage("잘못된 명령입니다.");
 	}

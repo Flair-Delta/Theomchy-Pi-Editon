@@ -2,6 +2,7 @@ package septagram.Theomachy.Ability.GOD;
 
 import java.util.Random;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
@@ -11,9 +12,12 @@ import septagram.Theomachy.Ability.Ability;
 public class Ares extends Ability
 {
 	
-	private final static String[] des= {"전쟁의 신입니다.",
+	private final static String[] des= {
+			   "아레스는 전쟁의 신입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"잔혹함",
 			   "모든 공격 데미지가 1.5배 상승합니다." ,
-			   "추가 패시브 능력으로 10% 확률로 공격을 회피합니다"};
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"예리함",
+			   "10% 확률로 공격을 회피합니다"};
 	
 	public Ares(String playerName)
 	{

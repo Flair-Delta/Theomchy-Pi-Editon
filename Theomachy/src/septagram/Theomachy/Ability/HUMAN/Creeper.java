@@ -18,23 +18,22 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Creeper extends Ability
 {
-	private final int coolTime0=30;
-	private final int material=4;
-	private final int stack0=5;
 	private boolean plasma = false;
-	private final static String[] des= {"몬스터형 능력입니다.",
+	private final static String[] des= {
+			   "크리퍼는 몬스터형 능력입니다.",
 			   "블레이즈 로드를 통해 능력을 사용하면" ,
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"펑!",
 			   "크리퍼와 같은 폭발력의 폭발을 일으킵니다." ,
 			   "번개를 맞은 적이 있다면 폭발력이 두 배로 증가합니다.",
-			   "번개 카운팅은 죽으면 초기화됩니다."};
+			   "번개 카운팅은 사망 시 초기화됩니다."};
 	
 	public Creeper(String playerName)
 	{
 		super(playerName,"크리퍼", 106, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=60;
+		this.sta1=20;
 		
 		this.rank=3;
 	}
@@ -55,9 +54,9 @@ public class Creeper extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack0, 0, coolTime0);
+			Skill.Use(player, 4, sta1, 0, cool1);
 			World world = player.getWorld();
 			Location location = player.getLocation();
 			float power = plasma ? 3.0f : 6.0f;

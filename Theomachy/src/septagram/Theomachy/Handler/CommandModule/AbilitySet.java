@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import septagram.Theomachy.Theomachy;
 import septagram.Theomachy.Ability.Ability;
 import septagram.Theomachy.Ability.GOD.*;
 import septagram.Theomachy.Ability.HUMAN.*;
@@ -91,10 +90,7 @@ public class AbilitySet
 			Bukkit.broadcastMessage(ChatColor.GOLD+"  "+e.getName());
 		int[] rn = RandomNumberConstuctor.nonDuplicate();
 		int length;
-		if(!Theomachy.RANDOMUP)
-			length = playerlist.length>Blacklist.Canlist ? Blacklist.Canlist : playerlist.length;
-		else
-			length = playerlist.length>Blacklist.Canlist*2  ? Blacklist.Canlist *2: playerlist.length;
+		length = playerlist.length>Blacklist.Canlist ? Blacklist.Canlist : playerlist.length;
 			
 		for (int i=0; i<length ;i++)
 		{

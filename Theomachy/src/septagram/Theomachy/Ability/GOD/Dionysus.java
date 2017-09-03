@@ -2,6 +2,7 @@ package septagram.Theomachy.Ability.GOD;
 
 import java.util.Random;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.potion.PotionEffect;
@@ -12,9 +13,11 @@ import septagram.Theomachy.Ability.Ability;
 
 public class Dionysus extends Ability
 {	
-	private final static String[] des= {"술의 신입니다.",
-			   "10% 확률로 자신을 공격한 10초간 상대의 시야를 어지럽히며",
-			   "동시에 상대의 이동속도, 공격력을 낮춥니다."};
+	private final static String[] des= {
+			   "디오니소스는 술의 신입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"알코올 중독",
+			   "10% 확률로 자신을 공격한 10초간 상대의 시야를 어지럽히는 동시에",
+			   "상대의 이동 속도, 공격력을 낮춥니다."};
 	public Dionysus(String playerName)
 	{
 		super(playerName,"디오니소스", 12, false, true, false, des);

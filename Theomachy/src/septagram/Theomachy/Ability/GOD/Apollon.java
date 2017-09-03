@@ -18,26 +18,24 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Apollon extends Ability
 {
-	private final static int coolTime1=90;
-	private final static int coolTime2=180;
-	private final static int material=4;
-	private final static int stack1=1;
-	private final static int stack2=10;
-	private final static String[] des= {"태양의 신입니다.",
-			   "일반능력은 밤을 낮으로 바꿀 수 있습니다.",
-			   "고급능력은 밤을 낮으로 바꿈과 동시에 내리고 있는 비와 눈을 증발시키며",
-			   "자신을 제외한 모든 플레이어들을 태웁니다.",
-			   "단, 화염속성의 능력자, 그늘, 물속에 있는 플레이어는 피해를 입지 않습니다."};
+
+	private final static String[] des= {
+			   "아폴론은 태양의 신입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"햇볕",
+			   "밤을 낮으로 바꿉니다.",
+				ChatColor.RED+"【고급】 "+ChatColor.WHITE+"자외선",
+				"밤을 낮으로 바꾸고 온갖 물을 증발시키며, 다른 사람을 태웁니다.",
+			    "화염속성의 능력자, 그늘, 물속에 있는 플레이어는 피해를 입지 않습니다."};
 	
 	public Apollon(String playerName)
 	{
 		super(playerName, "아폴론", 6, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=90;
+		this.cool2=180;
+		this.sta1=1;
+		this.sta2=25;
 		this.rank=2;
 		
 	}
@@ -61,9 +59,9 @@ public class Apollon extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, material, stack1))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack1, 1, coolTime1);
+			Skill.Use(player, 4, sta1, 1, cool1);
 			World world = player.getWorld();
 			world.setTime(6000);
 			Bukkit.broadcastMessage(ChatColor.YELLOW+"태양의 신이 해를 띄웠습니다.");
@@ -72,9 +70,9 @@ public class Apollon extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta2))
 		{
-			Skill.Use(player, material, stack2, 2, coolTime2);
+			Skill.Use(player, 4, sta2, 2, cool2);
 			World world = player.getWorld();
 			world.setTime(6000);
 			world.setStorm(false);

@@ -36,8 +36,9 @@ public class CommandManager implements CommandExecutor
 				sender.sendMessage(ChatColor.YELLOW+("/t  clear(c) ")+ChatColor.WHITE+("쿨타임을 초기화합니다."));
 				sender.sendMessage(ChatColor.YELLOW+("/t  black    ")+ChatColor.WHITE+("블랙리스트 시스템을 엽니다."));
 				sender.sendMessage(ChatColor.YELLOW+("/t  set       ")+ChatColor.WHITE+("GUI 설정 시스템을 엽니다."));
+				sender.sendMessage(ChatColor.YELLOW+("/t  tip       ")+ChatColor.WHITE+("게임에 필요한 TIP을 봅니다."));
 				sender.sendMessage(ChatColor.YELLOW+("/x  ")+ChatColor.RED+("<Player>     ")+ChatColor.WHITE+("해당 플레이어를 자신의 타겟으로 등록합니다"));
-				sender.sendMessage(ChatColor.AQUA+"【  안내  】"+ChatColor.WHITE+"/t help 이외의 명령은 모두 OP 전용입니다.");
+				sender.sendMessage(ChatColor.AQUA+"【  안내  】"+ChatColor.WHITE+"/t help, /t con, /t tip 이외의 명령은 모두 OP 전용입니다.");
 			}
 			else
 				CommandHandler.T_Handler(sender, command, label, data);

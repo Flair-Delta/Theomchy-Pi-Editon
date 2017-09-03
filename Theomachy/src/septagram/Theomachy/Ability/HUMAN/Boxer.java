@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
@@ -9,8 +10,10 @@ import septagram.Theomachy.Ability.Ability;
 public class Boxer extends Ability
 {
 	
-	private final static String[] des= {"빠른 주먹을 사용하는 능력입니다.",
-			   "당신의 광클 실력을 보여주세요."};
+	private final static String[] des= {
+			   "복서는 빠른 주먹을 사용하는 능력입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"속성 가격",
+			   "맨손 데미지의 딜레이가 사라집니다."};
 	
 	public Boxer(String playerName)
 	{

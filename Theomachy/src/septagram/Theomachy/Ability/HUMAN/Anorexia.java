@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 import septagram.Theomachy.Ability.Ability;
@@ -7,7 +8,9 @@ import septagram.Theomachy.DB.GameData;
 
 public class Anorexia extends Ability{
 
-	private final static String[] des= { "신경성 식욕부진증이라고도 합니다.",
+	private final static String[] des= { 
+			"거식증은 신경성 식욕부진증이라고도 합니다.",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"단식",
 			"배고픔이 절반으로 유지됩니다."
 	};
 	

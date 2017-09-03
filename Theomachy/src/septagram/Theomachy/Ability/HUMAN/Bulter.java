@@ -9,8 +9,10 @@ import septagram.Theomachy.Ability.Ability;
 
 public class Bulter extends Ability{
 
-	private final static String[] des= {"굉장히 젠틀한 능력입니다.",
-			"모든 폭발을 억제할 수 있습니다."};
+	private final static String[] des= {
+			"집사는 굉장히 젠틀한 능력입니다.",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"억제",
+			"모든 폭발을 억제합니다."};
 	
 	public Bulter(String playerName) {
 		super(playerName, "집사", 121, false, true, false, des);

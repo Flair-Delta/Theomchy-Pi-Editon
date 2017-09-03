@@ -13,7 +13,9 @@ import septagram.Theomachy.Ability.Ability;
 
 public class Darkness extends Ability{
 
-	private final static String[] des= {"맞으면 맞을수록 좋습니다~!",
+	private final static String[] des= {
+	   "다크니스는 맞으면 맞을수록 좋습니다~!",
+	   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"M",
 	   "가격 데미지를 1/10로 줄여받으며, 맞으면 10% 확률로",
 	   "점프합니다. 단, 공격을 전혀 맞출 수 없습니다."};
 	
@@ -21,7 +23,7 @@ public class Darkness extends Ability{
 		
 		super(playerName, "다크니스", 130, false, true, false, des);
 		
-		this.rank=3;
+		this.rank=1;
 		
 	}
 	

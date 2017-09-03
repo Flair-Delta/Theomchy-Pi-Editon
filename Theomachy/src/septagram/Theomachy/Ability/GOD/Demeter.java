@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.GOD;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
@@ -17,20 +18,20 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Demeter extends Ability
 {
-	private final int coolTime0=30;
-	private final int material=4;//나무
-	private final int stack0=10;
-	private final static String[] des= {"곡식의 신입니다.",
-			   "코블스톤을 이용해서 빵을 얻을 수 있습니다.",
-			   "기본적으로 배고픔이 닳지 않으며 체력 회복 속도가 4배로 상승합니다."};
+	private final static String[] des= {
+			  "데메테르는 곡식의 신입니다.",
+			  ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"수확",
+			   "빵을 얻을 수 있습니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"풍요",
+			   "항상 배고프지 않고, 체력 회복이 빠릅니다."};
 	
 	public Demeter(String playerName)
 	{
 		super(playerName,"데메테르", 4, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=30;
+		this.sta1=10;
 		
 		this.rank=2;
 	}
@@ -51,11 +52,11 @@ public class Demeter extends Ability
 
 	private void Action(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack0, 0,coolTime0);
+			Skill.Use(player, 4, sta1, 0,cool1);
 			Inventory inventory = player.getInventory();
-			inventory.addItem(new ItemStack(Material.BREAD.getId(),stack0));
+			inventory.addItem(new ItemStack(Material.BREAD.getId(),sta1));
 		}
 	}
 	

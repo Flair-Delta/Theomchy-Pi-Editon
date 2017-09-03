@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.GOD;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -18,27 +19,25 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Athena extends Ability
 {
-	private final int coolTime1=10;
-	private final int coolTime2=3;
-	private final int material=4;
-	private final int stack1=5;
-	private final int stack2=64;
 	private int abilityLimitCounter=2;
-	private final static String[] des= {"지혜의 신입니다.",
-			   "플레이어들이 사망할 때 마다 경험치를 얻습니다.",
-			   "자신이 사망하면 경험치는 초기화됩니다.",
-			   "일반능력으로 책을 얻을 수 있으며",
-			   "고급능력으로 게임 당 2번 인챈트 테이블을 얻을 수 있습니다."};
+	private final static String[] des= {
+			   "아테나는 지혜의 신입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"지식",
+			   "책을 얻습니다.",
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"강화",
+			   "게임 당 2번만 인챈트 테이블을 얻습니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"지혜",
+			   "다른 사람이 죽으면 경험치를 얻습니다. 자신이 죽으면 경험치가 사라집니다."};
 	
 	public Athena(String playerName)
 	{
 		super(playerName,"아테나", 5, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=10;
+		this.cool2=3;
+		this.sta1=5;
+		this.sta2=64;
 		
 		this.rank=4;
 	}
@@ -62,9 +61,9 @@ public class Athena extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, material, stack1))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack1, 1, coolTime1);
+			Skill.Use(player, 4, sta1, 1, cool1);
 			player.getInventory().addItem(new ItemStack(Material.BOOK.getId(),3));
 		}
 	}
@@ -73,17 +72,17 @@ public class Athena extends Ability
 	{
 		if (abilityLimitCounter>0)
 		{
-			if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+			if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta2))
 			{
 				if (abilityLimitCounter>1)
 				{
-					Skill.Use(player, material, stack2, 2, coolTime2);
+					Skill.Use(player, 4, sta2, 2, cool2);
 					player.getInventory().addItem(new ItemStack(Material.ENCHANTMENT_TABLE.getId(),1));
 					player.sendMessage("남은 교환 횟수 : "+--abilityLimitCounter);
 				}
 				else
 				{
-					Skill.Use(player, material, stack2, 2, 0);
+					Skill.Use(player, 4, sta2, 2, 0);
 					player.getInventory().addItem(new ItemStack(Material.ENCHANTMENT_TABLE.getId(),1));
 					player.sendMessage("남은 교환 횟수 : "+--abilityLimitCounter);
 				}

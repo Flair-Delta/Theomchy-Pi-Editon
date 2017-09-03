@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -18,12 +19,11 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Clocking extends Ability
 {
-	private final int coolTime0=30;
-	private final int material=4;
-	private final int stack0=5;
 	private List<Player> targetList;
-	private final static String[] des= {"일정시간 자신의 몸을 숨길 수 있는 능력입니다.",
-			   "일반 능력을 이용해 자신의 모습을 7초동안 감출 수 있습니다.", 
+	private final static String[] des= {
+			   "클로킹은 일정 시간 자신의 몸을 숨길 수 있는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"감추기",
+			   "자신의 모습을 잠시 감출 수 있습니다.", 
 			   "감춘 상태에서 상대방을 공격할 시 다시 모습이 나타나게 되며,",
 			   "공격 당한 상대는 20% 확률로 사망합니다."};
 	
@@ -32,8 +32,8 @@ public class Clocking extends Ability
 		super(playerName,"클로킹", 112, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=60;
+		this.sta1=25;
 		
 		this.rank=3;
 	}
@@ -54,9 +54,9 @@ public class Clocking extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack0, 0, coolTime0);
+			Skill.Use(player, 4, sta1, 0, cool1);
 			targetList = player.getWorld().getPlayers();
 			for (Player e : targetList)
 				e.hidePlayer(player);			
