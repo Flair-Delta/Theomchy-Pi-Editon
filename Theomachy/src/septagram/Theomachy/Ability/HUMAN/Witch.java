@@ -3,6 +3,7 @@ package septagram.Theomachy.Ability.HUMAN;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -22,9 +23,11 @@ public class Witch extends Ability
 	private final int coolTime0=60;
 	private final int material=4;
 	private final int stack0=1;
-	private final static String[] des= {"디버프를 사용하는 능력입니다.",
-			   "블레이즈 로드를 이용한 능력 사용시 주변 10칸 안에 있는",
-			   "자신의 팀원을 제외한 모두에게 각종 10초간 디버프를 적용합니다." ,
+	private final static String[] des= {
+			   "마녀는 디버프를 사용하는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"저주 Ⅰ",
+			   "주변의 적에게 각종 디버프를 10초 간 적용합니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"저주 Ⅱ",
 			   "자신을 공격한 상대는 7% 확률로 5초간 디버프에 걸리게 됩니다."};
 	
 	public Witch(String playerName)
@@ -32,8 +35,8 @@ public class Witch extends Ability
 		super(playerName,"마녀", 116, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=60;
+		this.sta1=15;
 		
 		this.rank=2;
 	}

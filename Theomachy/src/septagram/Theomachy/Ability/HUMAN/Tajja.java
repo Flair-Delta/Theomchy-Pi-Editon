@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -13,7 +14,9 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Tajja extends Ability{
 
-	private final static String[] des= {"손놀림이 빠른 능력입니다.",
+	private final static String[] des= {
+			"타짜는 손놀림이 빠른 능력입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"밑장빼기",
 			"능력 사용 시 인벤토리에 가장 먼저 있는 검이 소비됩니다.",
 			"능력 사용 후 맨손으로 가격 시 소비된 검의 데미지만큼",
 			"데미지를 줄 수 있습니다.",

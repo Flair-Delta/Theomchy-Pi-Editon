@@ -2,6 +2,7 @@ package septagram.Theomachy.Ability.GOD;
 
 import java.util.Timer;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -15,9 +16,10 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Horeundal extends Ability{
 	
-	private final static String[] des= {"시간과 공간의 신입니다.",
-			"능력 사용 시 위치를 기억하고, 10초 뒤에 기억했던",
-			"위치로 돌아옵니다. 돌아온 뒤 2초간 투명해집니다."};
+	private final static String[] des= {
+			"호른달은 시간과 공간의 신입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"시공 초월",
+			"위치 기억 후 10초 뒤 되돌아옵니다. 되돌아 온 뒤에 잠시 투명해집니다."};
 	
 	public Horeundal(String playerName)
 	{

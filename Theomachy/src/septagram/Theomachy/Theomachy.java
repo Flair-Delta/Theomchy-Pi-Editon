@@ -37,7 +37,6 @@ public class Theomachy extends JavaPlugin
 	public static boolean FAST_START = false;
 	public static int DIFFICULTY = 1;
 	public static boolean GAMB = true;
-	public static boolean RANDOMUP = true;
 	
 	public CommandManager cm;
 	public static Logger log=Bukkit.getLogger();
@@ -94,7 +93,6 @@ public class Theomachy extends JavaPlugin
 		DIFFICULTY = getConfig().getInt("난이도");
 		FAST_START=getConfig().getBoolean("빠른 시작");
 		GAMB=getConfig().getBoolean("도박 허용");
-		RANDOMUP=getConfig().getBoolean("가용 인원 증가");
 		
 		log.info("[신들의 전쟁] ========================================");
 		log.info("[신들의 전쟁] 게임 시작 시 인벤토리 클리어 : "+String.valueOf(INVENTORY_CLEAR));
@@ -103,7 +101,6 @@ public class Theomachy extends JavaPlugin
 		log.info("[신들의 전쟁] 리스폰 시 침대 무시 : "+String.valueOf(IGNORE_BED));
 		log.info("[신들의 전쟁] 빠른 시작 : "+String.valueOf(FAST_START));
 		log.info("[신들의 전쟁] 도박 허용 : "+String.valueOf(GAMB));
-		log.info("[신들의 전쟁] 추첨 가용 가용 인원 증가 : "+String.valueOf(GAMB));
 		log.info("[신들의 전쟁] 서버 자동저장 : "+String.valueOf(AUTO_SAVE));
 		log.info("[신들의 전쟁] 동물 스폰 : "+String.valueOf(ANIMAL));
 		log.info("[신들의 전쟁] 몬스터 스폰 : "+String.valueOf(MONSTER));

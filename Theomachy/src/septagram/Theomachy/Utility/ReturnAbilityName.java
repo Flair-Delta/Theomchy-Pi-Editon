@@ -29,11 +29,11 @@ public class ReturnAbilityName {
 		case 102: e="광부";break;
 		case 103: e="스탠스";break;
 		case 104: e="텔레포터";break;
-		case 105:e="봄버맨";break;
+		case 105:e="봄버";break;
 		case 106: e="크리퍼";break;
 		case 107: e="마법사";break;
 		case 108: e="암살자";break;
-		case 109: e="반사";break;
+		case 109: e="뉴턴";break;
 		case 110: e="블라인더";break;
 		case 111: e="무적";break;
 		case 112: e="클로킹";break;
@@ -49,7 +49,7 @@ public class ReturnAbilityName {
 		case 122: e="미도리야"; break;
 		case 123: e="금수저"; break;
 		case 124: e="여왕벌"; break;
-		case 125: e="네오암스트롱제트암스트롱포";break;
+		case 125: e="사이코스노우";break;
 		case 126: e="타짜";break;
 		case 127: e="안락소녀";break;
 		case 128: e="메구밍";break;

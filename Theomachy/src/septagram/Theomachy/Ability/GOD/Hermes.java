@@ -3,6 +3,7 @@ package septagram.Theomachy.Ability.GOD;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
@@ -19,13 +20,12 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Hermes extends Ability
 {
-	private final int coolTime0=60;
-	private final int material=4;
-	private final int stack0=2;
-	private final static String[] des= {"여행자의 신입니다.",
-			   "기본적으로 이동속도가 빠르며 블레이즈 로드를",
-			   "사용한 능력을 통해 비행 할 수 있습니다.",
-			   "비행 시 점프하면서 쓰시면 바로 날 수 있습니다." ,
+	private final static String[] des= {
+			   "헤르메스는 여행자의 신입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"민첩함",
+			   "이동 속도가 빠릅니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"비행",
+			   "비행할 수 있으며, 점프하면서 비행하면 바로 날 수 있습니다.",
 			   "비행 중에는 낙하 데미지를 받지 않습니다."};
 	
 	public Hermes(String playerName)
@@ -33,8 +33,8 @@ public class Hermes extends Ability
 		super(playerName,"헤르메스", 11, true, true, true, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=60;
+		this.sta1=10;
 		
 		this.rank=4;
 	}
@@ -55,9 +55,9 @@ public class Hermes extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack0, 0, coolTime0);
+			Skill.Use(player, 4, sta1, 0, cool1);
 			player.setAllowFlight(true);
 			player.setFlying(true);
 			Timer t = new Timer();

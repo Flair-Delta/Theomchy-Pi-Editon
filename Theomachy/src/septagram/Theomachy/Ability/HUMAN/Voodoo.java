@@ -24,7 +24,9 @@ public class Voodoo extends Ability
 	private final int stack0=5;
 	private String targetName=null;
 	private Block postSign=null;
-	private final static String[] des= {"팻말을 이용해서 상대를 타격할 수 있는 능력입니다.",
+	private final static String[] des= {
+			   "부두술사는 팻말을 이용해서 상대를 타격할 수 있는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"부두술",
 			   "팻말에 타격할 상대의 이름을 적으면 ",
 			   "그 아이디를 가진 플레이어는 팻말과 연결되며" ,
 			   "팻말을 두들겨 팰시 대상 플레이어가 데미지를 입습니다." ,
@@ -35,8 +37,8 @@ public class Voodoo extends Ability
 	public Voodoo(String playerName)
 	{
 		super(playerName, "부두술사", 119, true, true, false, des);
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=180;
+		this.sta1=20;
 		
 		this.rank=3;
 	}

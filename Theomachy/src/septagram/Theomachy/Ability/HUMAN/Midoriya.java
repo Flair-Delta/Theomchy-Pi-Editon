@@ -15,8 +15,10 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Midoriya extends Ability{
 
-	public final static String[] des= {"블레이즈 로드 좌클릭 후 상대를 ",
-			"가격하면 원 포 올을 쓸 수 있습니다.",
+	public final static String[] des= {
+			"미도리야는 UA에 재학 중입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"원 포 올",
+			"능력 사용 후 상대를 가격하면 원 포 올을 쓸 수 있습니다.",
 			"원 포 올을 쓰고 난 뒤에는 각종 디버프에 시달립니다."};
 	
 	private int coolTime0=350;

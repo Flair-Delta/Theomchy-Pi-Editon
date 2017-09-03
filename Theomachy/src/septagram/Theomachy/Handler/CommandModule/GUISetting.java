@@ -19,13 +19,9 @@ public class GUISetting {
 		Player p=(Player)sender;
 		
 		if(PermissionChecker.Sender(sender)) {
-			if(!GameHandler.Ready && !GameHandler.Start) {
 				
 				p.openInventory(gui());
 				
-			}else {
-				sender.sendMessage(ChatColor.RED+"【경고】 "+ChatColor.WHITE+"게임이 준비 중이거나 게임이 시작된 이후에는 설정을 건드릴 수 없습니다.");
-			}
 		}
 	}
 	
@@ -48,7 +44,6 @@ public class GUISetting {
 		dura[6]=Theomachy.ANIMAL  ? 5:14;
 		dura[7]=Theomachy.MONSTER  ? 5:14;
 		dura[8]=Theomachy.GAMB ? 5:14;
-		dura[9]=Theomachy.RANDOMUP ? 5:14;
 		
 		for(int i=0;i<n;i++) {
 			wool[i]=new ItemStack(Material.WOOL);
@@ -64,7 +59,6 @@ public class GUISetting {
 		meta[6].setDisplayName(ChatColor.WHITE+"동물 스폰");
 		meta[7].setDisplayName(ChatColor.WHITE+"몬스터 스폰");
 		meta[8].setDisplayName(ChatColor.WHITE+"도박 허용");
-		meta[9].setDisplayName(ChatColor.WHITE+"추첨 가용 인원 2배");
 		
 		for(int i=0;i<n;i++) {
 			wool[i].setDurability((short)dura[i]);
@@ -80,7 +74,6 @@ public class GUISetting {
 		gui.setItem(11, wool[6]);
 		gui.setItem(13, wool[7]);
 		gui.setItem(15, wool[8]);
-		gui.setItem(17, wool[9]);
 		
 		return gui;
 	}
@@ -107,10 +100,6 @@ public class GUISetting {
 		case "빠른 시작":
 				if(wool.getDurability()==5) { Theomachy.FAST_START=false; wool.setDurability((short)14);}
 				else { Theomachy.FAST_START=true; wool.setDurability((short)5); }
-			break;
-		case "추첨 가용 인원 2배":
-			if(wool.getDurability()==5) { Theomachy.FAST_START=false; wool.setDurability((short)14);}
-			else { Theomachy.FAST_START=true; wool.setDurability((short)5); }
 			break;
 		case "서버 자동 저장":
 				if(wool.getDurability()==5) { Theomachy.AUTO_SAVE=false; wool.setDurability((short)14);}

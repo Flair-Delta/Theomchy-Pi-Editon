@@ -17,17 +17,20 @@ import septagram.Theomachy.Utility.PlayerInventory;
 
 public class Snow extends Ability{
 
-	private final static String[] des= {"능력 이름이 궁금하시다면 네이버에 검색하세요.",
+	private final static String[] des= {
+			"말 그대로 미친 눈사람입니다.",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"폭설",
 			"눈을 맞추면 70%의 확률로 공격 지수만큼의 데미지를 줍니다.",
+			"공격 지수가 죽을 때마다 최대 7까지 상승합니다.",
 			"공격 지수는 능력의 막대 좌클릭으로 확인할 수 있습니다.",
-			"공격 지수는 죽을 때마다 최대 7까지 상승합니다.",
-			"눈으로 만들어졌기 때문에 불 데미지를 2배로 받습니다.",
-			"눈덩이를 맞춰도 상대가 밀려나지 않으며,",
-			"게임 시작 시 눈덩이 8개를 받습니다."};
+			"눈덩이를 맞춰도 상대가 밀려나지 않습니다.",
+			"게임 시작 시 눈덩이 8개를 받습니다.",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"얼음 속성",
+			"불에 의한 데미지를 2배로 받습니다."};
 	
 	
 	public Snow(String playerName) {
-		super(playerName, "네오암스트롱제트암스트롱포", 125, true, true, false, des);
+		super(playerName, "사이코스노우", 125, true, true, false, des);
 		
 		this.rank=3;
 		
@@ -42,7 +45,7 @@ public class Snow extends Ability{
 		if(PlayerInventory.InHandItemCheck(player, 369)){
 			switch(EventFilter.PlayerInteract(event)){
 			case 0:case 1:
-				player.sendMessage("공격 수치 : "+attack);
+				player.sendMessage("공격 지수 : "+attack);
 				break;
 			}
 		}
@@ -50,7 +53,7 @@ public class Snow extends Ability{
 	
 	public void T_Passive(PlayerDeathEvent event) {
 		if(attack<8){
-			event.getEntity().sendMessage(ChatColor.RED+"공격 수치가 증가하고 있습니다!");
+			event.getEntity().sendMessage(ChatColor.RED+"공격 지수가 증가하고 있습니다!");
 			attack++;
 		}
 	}

@@ -1,6 +1,7 @@
 package septagram.Theomachy.Ability.GOD;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -22,14 +23,13 @@ import septagram.Theomachy.Utility.Skill;
 public class Poseidon extends Ability
 {
 	private boolean flag = true;
-	private final int coolTime0=240;
-	private final int material=4;
-	private final int stack0=5;
-	private final static String[] des= {"물의 신입니다.",
+	private final static String[] des= {
+			   "포세이돈은 물의 신입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"물 속성",
 			   "물 속에 있을 때 일정확률로 모든 피격을 33% 확률로 회피합니다.",
 			   "물 속에서 나온 직후 7초 동안 효과가 지속됩니다.",
-			   "블레이즈 로드를 이용한 능력으로 자신의 앞으로 물을 생성하며",
-			   "이후 7초 동안 물에 있는 플레이어는 모두 날려버립니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"워터 캐슬",
+			   "자신의 앞으로 물벽을 생성하며 이후 물벽에 접근하는 사람을 넉백시킵니다.",
 			   "물벽은 조약돌을 뚫을 수 있습니다."};
 	
 	public Poseidon(String playerName)
@@ -37,8 +37,8 @@ public class Poseidon extends Ability
 		super(playerName,"포세이돈", 2, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=240;
+		this.sta1=5;
 		
 		this.rank=4;
 	}
@@ -59,11 +59,11 @@ public class Poseidon extends Ability
 	
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
 			if (flag)
 			{
-				Skill.Use(player, material, stack0, 0, coolTime0);
+				Skill.Use(player, 4, sta1, 0, cool1);
 				Location location = player.getLocation();
 				Vector v = player.getEyeLocation().getDirection();
 				v.setX(Math.round(v.getX()));

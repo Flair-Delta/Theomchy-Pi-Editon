@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -16,25 +17,23 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Invincibility extends Ability
 {
-	private final int coolTime1=50;
-	private final int coolTime2=120;
-	private final int material=4;
-	private final int stack1=1;
-	private final int stack2=5;
-	private final static String[] des= {"일정시간 데미지를 받지 않을 수 있는 능력입니다.",
-			   "블레이즈 로드를 이용해 능력을 사용할 수 있습니다.",
-			   "좌클릭을 이용해 일정시간 자신을 무적 상태로 만듭니다.",
-			   "우클릭은 자신에게 체력회복 버프를 시전합니다."};
+
+	private final static String[] des= {
+			   "무적은 일정시간 데미지를 받지 않을 수 있는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"천하장사",
+			   "일정 시간 자신을 무적 상태로 만듭니다.",
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"숨 돌리기",
+			   "자신에게 체력 회복 버프를 시전합니다."};
 	
 	public Invincibility(String playerName)
 	{
 		super(playerName,"무적", 111, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=50;
+		this.cool2=120;
+		this.sta1=30;
+		this.sta2=50;
 		
 		this.rank=3;
 	}
@@ -58,9 +57,9 @@ public class Invincibility extends Ability
 
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, material, stack1))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack1, 1, coolTime1);
+			Skill.Use(player, 4, sta1, 1, cool1);
 			{
 				CoolTime.COOL0.put(playerName+"1", 7);
 			}
@@ -69,9 +68,9 @@ public class Invincibility extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack2, 2, coolTime2);
+			Skill.Use(player, 4, sta1, 2, cool1);
 			player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 500, 0), true);
 		}
 	}

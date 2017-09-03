@@ -28,7 +28,8 @@ public class Hades extends Ability
 	private final int material=4;
 	private final int stack1=5;
 	private final int stack2=10;
-	private final static String[] des= {"죽음의 신입니다.",
+	private final static String[] des= {
+				"죽음의 신입니다.",
 			   "패시브 능력으로 사망시 70% 확률로 아이템을 잃지 않습니다." ,
 			   "일반능력은 주변 2칸에 있는 자신을 포함한 ",
 			   "모든 플레이어와 함께 나락으로 떨어집니다.",

@@ -19,8 +19,10 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Morpious extends Ability{
 
-	private final static String[] des= {"잠의 신입니다.",
-			"일반능력으로 목표 지정한 적을 1분간 잠들게 합니다.",
+	private final static String[] des= {
+			"모르피우스는 잠의 신입니다.",
+			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"수면",
+			"목표로 지정한 적을 1분간 잠들게 합니다.",
 			"목표 지정: /x <대상>"};
  	
 	private final int coolTime1=180;

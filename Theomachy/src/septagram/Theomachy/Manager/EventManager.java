@@ -342,7 +342,8 @@ public class EventManager implements Listener
 		if(!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":: 블랙리스트 ::") && 
 			!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":::::::: 능력 정보 ::::::::") && 
 			!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":::::: 설정 ::::::") &&
-			!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":::::::: 편의 기능 ::::::::"))
+			!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":::::::: 편의 기능 ::::::::") &&
+			!ChatColor.stripColor(event.getInventory().getTitle()).equalsIgnoreCase(":::::::: 팁 ::::::::"))
 			return;
 		event.setCancelled(true);
 		try {

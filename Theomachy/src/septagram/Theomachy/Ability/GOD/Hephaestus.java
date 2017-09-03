@@ -3,6 +3,7 @@ package septagram.Theomachy.Ability.GOD;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -20,22 +21,20 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Hephaestus extends Ability
 {
-	private final int coolTime0=10;
-	private final int material=4;
-	private final int stack0=1;
-	private final static String[] des= {"불의 신입니다.",
-			   "기본적으로 화염데미지를 받지 않으며 용암을 자유자재로 다룰 수 있습니다.",
-			   "일반능력을 통해 해당 지역에 용암을 놓을 수 있습니다.",
-			   "놓은 용암은 2초 뒤 사라집니다.",
-			   "물에 들어갈 시 데미지를 입습니다."};
+	private final static String[] des= {
+			  "헤파이토스는 불의 신입니다.",
+			  ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"화염 속성",
+			  "불에 관한 데미지를 일절 받지 않으나, 물에 들어가면 데미지를 입습니다.",
+			  ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"용암",
+			   "블럭을 클릭하면 용암을 놓습니다. 놓은 용암은 2초 뒤 사라집니다.",};
 	
 	public Hephaestus(String playerName)
 	{
 		super(playerName,"헤파이토스", 9, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime0;
-		this.sta1=stack0;
+		this.cool1=10;
+		this.sta1=1;
 		
 		this.rank=2;
 	}
@@ -61,9 +60,9 @@ public class Hephaestus extends Ability
 		Block block = location.getBlock();
 		if (block.getTypeId() == 0)
 		{
-			if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, material, stack0))
+			if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, sta1))
 			{
-				Skill.Use(player, material, stack0, 0, coolTime0);
+				Skill.Use(player, 4, sta1, 0, cool1);
 				block.setTypeId(10);
 				Timer t = new Timer();
 				t.schedule(new LavaTimer(block), 2000);

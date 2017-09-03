@@ -27,10 +27,12 @@ public class Wizard extends Ability
 	private final int material=4;
 	private final int stack1=5;
 	private final int stack2=10;
-	private final static String[] des= {"신의 능력을 빌려 쓰는 능력입니다.",
+	private final static String[] des= {
+			   "마법사는 신의 능력을 빌려 쓰는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"날려버리기",
 			   "일반능력은 주변 10칸 모든 플레이어를 자신이 보는 방향으로 모두 날려버립니다.",
-			   "고급능력은 주변 5칸 모든 플레이어를 공중으로 띄운 후 ",
-			   "플레이어에게 번개를 떨어뜨립니다.",
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"신의 심판",
+			   "주변의 사람들을 공중으로 띄운 후 번개를 떨어뜨립니다.",
 			   "고급능력 발동 시 패널티로 자신의 체력이 반으로 줄어듭니다."};
 	
 	public Wizard(String playerName)
@@ -38,10 +40,10 @@ public class Wizard extends Ability
 		super(playerName,"마법사", 107, true, false, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=180;
+		this.cool2=300;
+		this.sta1=25;
+		this.sta2=45;
 		
 		this.rank=4;
 	}

@@ -26,21 +26,12 @@ public class RandomNumberConstuctor
 		Blacklist.Canlist=Canlist.size();
 		
 		int[] rn;
-		if(!Theomachy.RANDOMUP)
-			rn=new int[Canlist.size()];
-		else
-			rn=new int[Canlist.size()*2];
-		
+		rn=new int[Canlist.size()];
+
 		Object[] rn1= Canlist.toArray();
 		
 		for(int i=0;i<rn1.length;i++) {
 			rn[i]=(Integer) rn1[i];
-		}
-		
-		if(Theomachy.RANDOMUP){
-			for(int i=rn1.length;i<rn.length;i++){
-				rn[i]=(Integer) rn1[i-rn1.length];
-			}
 		}
 		
 		for(int i=0; i<rn.length; i++)//섞

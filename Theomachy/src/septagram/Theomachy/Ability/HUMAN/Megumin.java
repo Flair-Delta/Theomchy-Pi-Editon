@@ -1,5 +1,6 @@
 package septagram.Theomachy.Ability.HUMAN;
 
+import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -11,13 +12,11 @@ import septagram.Theomachy.Utility.PlayerInventory;
 
 public class Megumin extends Ability{
 
-	private final static String[] des= { "이 능력은 메구밍!",
-											   "아크 위저드이자, 최강의 공격 마법인",
-											   "폭렬 마법을 다루는 능력!",
-											   "그렇습니다. 게임에서 딱 한 번 영창 후",
-											   "전방에 폭렬 마법을 날릴 수 있습니다.",
-											   "블레이즈 로드로 선택한 블럭에 강력한 ",
-											   "폭발을 날릴 수 있습니다. 단, 사용 후 쓰러집니다."};
+	private final static String[] des= {
+			"이 능력은 메구밍!",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"폭렬 ♪",
+			"게임 중 한 번만 영창 후 전방의 블럭에 폭렬 마법을 날립니다.",
+			"사용 후 즉시 쓰러집니다."};
 	
 	public Megumin(String playerName) {
 		super(playerName, "메구밍", 128, true, false, false, des);
@@ -49,9 +48,6 @@ public class Megumin extends Ability{
 				Block block=player.getTargetBlock(null, 25);
 				if (BlockFilter.AirToFar(player, block))
 				{
-					
-					
-					
 					cancel=true;
 				}
 			}

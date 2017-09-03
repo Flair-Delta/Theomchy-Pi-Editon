@@ -25,21 +25,21 @@ public class Priest extends Ability
 	private final int stack1=1;
 	private final int stack2=2;
 	private final static String[] des= {
-				"버프를 사용 할 수 있는 능력입니다.",
-			   "블레이즈 로드를 이용해서 능력을 사용할 수 있습니다." ,
-			   "일반능력은 자신에게 랜덤으로 버프를 적용합니다." ,
-			   "고급능력은 자신을 포함한 자신의 모든 팀원에게 ",
-			   "랜덤으로 버프를 적용합니다."};
+			   "사제는 버프를 사용 할 수 있는 능력입니다.",
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"신의 은총 Ⅰ",
+			   "자신에게 랜덤으로 버프를 적용합니다." ,
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"신의 은총 Ⅱ",
+			   "자신의 팀원 모두에게 랜덤으로 버프를 적용합니다."};
 	
 	public Priest(String playerName)
 	{
 		super(playerName,"사제", 115, true, false,false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=35;
+		this.cool2=90;
+		this.sta1=30;
+		this.sta2=45;
 		
 		this.rank=2;
 		
