@@ -25,7 +25,7 @@ public class Priest extends Ability
 	private final int stack1=1;
 	private final int stack2=2;
 	private final static String[] des= {
-			   "사제는 버프를 사용 할 수 있는 능력입니다.",
+			   "사제는 신의 가호를 받을 수 있는 능력입니다.",
 			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"신의 은총 Ⅰ",
 			   "자신에게 랜덤으로 버프를 적용합니다." ,
 			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"신의 은총 Ⅱ",

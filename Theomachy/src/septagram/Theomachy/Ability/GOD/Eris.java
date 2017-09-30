@@ -13,7 +13,7 @@ public class Eris extends Ability{
 
 	private final static String[] des= {
 			"에리스는 불화의 여신입니다.",
-			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"다툼",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"시기",
 			"자신을 공격한 플레이어를 20% 확률로 밀쳐냅니다."};
 	
 	public Eris(String playerName) {

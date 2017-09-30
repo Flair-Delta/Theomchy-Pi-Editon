@@ -75,10 +75,10 @@ public class GameReadyTimer extends TimerTask
 			{
 			case 4:
 				Bukkit.broadcastMessage(ChatColor.RED+"신들의 전쟁 플러그인은 스카이블럭 전용이며 야생,하드코어로는 부적합합니다");
-				Bukkit.broadcastMessage(ChatColor.RED+"이점을 숙지 하시고 게임을 즐기시길 바랍니다.");
+				Bukkit.broadcastMessage(ChatColor.RED+"이 점을 숙지 하시고 게임을 즐기시길 바랍니다.");
 				break;
 			case 8:
-				Bukkit.broadcastMessage(ChatColor.AQUA+"플러그인 배포중인 곳");
+				Bukkit.broadcastMessage(ChatColor.AQUA+"플러그인이 배포 중인 곳");
 				Bukkit.broadcastMessage(ChatColor.GREEN+"http://cafe.naver.com/craftproducer");
 				break;
 			case 12:
@@ -119,8 +119,8 @@ public class GameReadyTimer extends TimerTask
 				}
 				break;
 			case 29:
-				Bukkit.broadcastMessage("제작자 : "+ChatColor.AQUA+"Septagram(칠각별)");
-				Bukkit.broadcastMessage("제작자 블로그 : http://blog.naver.com/septagram/");
+				Bukkit.broadcastMessage("원작자 : "+ChatColor.AQUA+"Septagram(칠각별)");
+				Bukkit.broadcastMessage("원작자 블로그 : http://blog.naver.com/septagram/");
 				Bukkit.broadcastMessage("버그 신고 사항은 "+ChatColor.DARK_GREEN+"septagram@naver.com "+ChatColor.WHITE+"으로 로그를 보내주세요");
 				Bukkit.broadcastMessage("추가된 기능에 대한 신고 사항은 "+ChatColor.DARK_GREEN+"humint2003@naver.com"+ChatColor.WHITE+"으로 로그를 보내주세요.");
 				break;

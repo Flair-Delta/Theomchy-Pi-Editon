@@ -1,6 +1,7 @@
 package septagram.Theomachy.Ability.HUMAN;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -88,22 +89,23 @@ public class Tajja extends Ability{
 	public void T_Passive(EntityDamageByEntityEvent event) {
 		Player p=(Player) event.getDamager();
 			if(p.getName().equals(this.playerName)) {
-				if(sword!=0) {
-					switch(time) {
-					case 1:
-						event.setDamage(sword);
-						p.sendMessage("동작그만, 밑장 빼기냐.");
-						sword=0;
-						time=-1;
-						break;
-					default:
-						event.setDamage(sword);
-						time--;
-						break;
+				if(p.getItemInHand().getType().equals(Material.AIR)) {
+					if(sword!=0) {
+						switch(time) {
+						case 1:
+							event.setDamage(sword);
+							p.sendMessage("동작그만, 밑장 빼기냐.");
+							sword=0;
+							time=-1;
+							break;
+						default:
+							event.setDamage(sword);
+							time--;
+							break;
+						}
 					}
-				}else {
-					p.sendMessage("소비된 검이 없습니다.");
 				}
+				
 			}
 	}
 

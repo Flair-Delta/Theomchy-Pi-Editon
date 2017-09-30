@@ -1,8 +1,5 @@
 package septagram.Theomachy.Ability.GOD;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -24,9 +21,6 @@ public class Morpious extends Ability{
 			ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"수면",
 			"목표로 지정한 적을 1분간 잠들게 합니다.",
 			"목표 지정: /x <대상>"};
- 	
-	private final int coolTime1=180;
-	private final int stack1=32;
 
 	private String abilitytarget;
 	
@@ -35,8 +29,8 @@ public class Morpious extends Ability{
 		
 		this.rank=3;
 		
-		this.cool1=coolTime1;
-		this.sta1=stack1;
+		this.cool1=180;
+		this.sta1=32;
 	}
 	
 	public void T_Active(PlayerInteractEvent event){
@@ -53,7 +47,7 @@ public class Morpious extends Ability{
 	}
 
 	private void leftAction(Player player){
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, stack1))
+		if (CoolTimeChecker.Check(player, 0)&&PlayerInventory.ItemCheck(player, 4, cool1))
 		{
 			String[] team = new String[2];
 			team[0]=GameData.PlayerTeam.get(player.getName());
@@ -67,13 +61,11 @@ public class Morpious extends Ability{
 				
 				else{
 					Player target = GameData.OnlinePlayer.get(abilitytarget);
-					Skill.Use(player, 4, stack1, 1, coolTime1);
+					Skill.Use(player, 4, sta1, 0, cool1);
 					player.sendMessage(ChatColor.GRAY+"목표를 잠재웠습니다!");
 					target.sendMessage(ChatColor.GRAY+"착한 어른이는 일찍 자고 일찍 일어나야 해요~");
 					target.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200,0), true);
 					target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 1200, 3), true);
-					Timer t = new Timer();
-					t.schedule(new M(player, target), 57000, 1000);
 				}
 				
 			}
@@ -97,31 +89,4 @@ public class Morpious extends Ability{
 			else
 				sender.sendMessage("자기 자신을 목표로 등록 할 수 없습니다.");
 	}
-}
-
-class M extends TimerTask{
-
-	private int count=3;
-	private Player p;
-	private Player t;
-	
-	public M (Player p, Player t){
-		this.p=p;
-		this.t=t;
-	}
-	
-	@Override
-	public void run() {
-		if(count==0){
-			t.sendMessage("잠에서 깨어났습니다!");
-			p.sendMessage("마법을 걸었던 상대가 잠에서 깨어났습니다!");
-			this.cancel();
-		}
-		else{
-			t.sendMessage(ChatColor.DARK_AQUA+"잠에서 깨어나기 전까지 "+ChatColor.WHITE+count+ChatColor.DARK_AQUA+"초 전입니다.");
-			p.sendMessage(ChatColor.DARK_AQUA+"상대가 잠에서 깨어나기 전까지 "+ChatColor.WHITE+count+ChatColor.DARK_AQUA+"초 전입니다.");
-		}
-		count--;
-	}
-
 }

@@ -23,28 +23,24 @@ import septagram.Theomachy.Utility.Skill;
 
 public class Hades extends Ability
 {	
-	private final int coolTime1=100;
-	private final int coolTime2=300;
-	private final int material=4;
-	private final int stack1=5;
-	private final int stack2=10;
 	private final static String[] des= {
-				"죽음의 신입니다.",
-			   "패시브 능력으로 사망시 70% 확률로 아이템을 잃지 않습니다." ,
-			   "일반능력은 주변 2칸에 있는 자신을 포함한 ",
-			   "모든 플레이어와 함께 나락으로 떨어집니다.",
-			   "고급능력은 주변 4칸에 있는 자신을 제외한 ",
-			   "모든 플레이어를 나락으로 떨어뜨립니다."};
+			   "하데스는 죽음의 신입니다.",
+			   ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"사망 지배",
+			   "사망 시 60% 확률로 아이템을 잃지 않습니다." ,
+			   ChatColor.AQUA+"【일반】 "+ChatColor.WHITE+"나락 Ⅰ",
+			   "자신과 주변의 모든 것이 나락으로 떨어집니다.",
+			   ChatColor.RED+"【고급】 "+ChatColor.WHITE+"나락 Ⅱ",
+			   "자신을 제외한 주변의 모든 것이 나락으로 떨어집니다."};
 	
 	public Hades(String playerName)
 	{
-		super(playerName,"하데스", 3, true, false, false, des);
+		super(playerName,"하데스", 3, true, true, false, des);
 		Theomachy.log.info(playerName+abilityName);
 		
-		this.cool1=coolTime1;
-		this.cool2=coolTime2;
-		this.sta1=stack1;
-		this.sta2=stack2;
+		this.cool1=100;
+		this.cool2=300;
+		this.sta1=20;
+		this.sta2=35;
 		
 		this.rank=4;
 	}
@@ -68,9 +64,9 @@ public class Hades extends Ability
 	
 	private void leftAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, material, stack1))
+		if (CoolTimeChecker.Check(player, 1)&&PlayerInventory.ItemCheck(player, 4, sta1))
 		{
-			Skill.Use(player, material, stack1, 1,coolTime1);
+			Skill.Use(player, 4, sta1, 1, cool1);
 			Entity entity=player;
 			Location location = player.getLocation();
 			location.setY(-2.0d);
@@ -90,9 +86,9 @@ public class Hades extends Ability
 	
 	private void rightAction(Player player)
 	{
-		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, material, stack2))
+		if (CoolTimeChecker.Check(player, 2)&&PlayerInventory.ItemCheck(player, 4, sta2))
 		{
-			Skill.Use(player, material, stack2, 2,coolTime2);
+			Skill.Use(player, 4, sta2, 2,cool2);
 			Entity entity=player;
 			Location location = player.getLocation();
 			location.setY(-2.0d);
@@ -114,7 +110,7 @@ public class Hades extends Ability
 	public void T_Passive(PlayerDeathEvent event)
 	{
 		Random r=new Random();
-		if (r.nextInt(10) <=5)
+		if (r.nextInt(10) <=6)
 		{
 			this.inventory=event.getEntity().getInventory().getContents();
 			this.armor = event.getEntity().getInventory().getArmorContents();

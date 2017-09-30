@@ -56,8 +56,6 @@ public class Zeus extends Ability
 			case 2:case 3:
 				rightAction(player);
 				break;
-			case 4:
-				player.sendMessage(event.getAction().toString());
 			}
 		}
 	}

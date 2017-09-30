@@ -13,13 +13,13 @@ public class T_Message
 		switch(abilityCase)
 		{
 		case 0:
-			player.sendMessage("재사용 대기시간 : "+cool+"초");
+			player.sendMessage("쿨타임이 "+cool+"초 남았습니다!");
 			break;
 		case 1:
-			player.sendMessage(ChatColor.AQUA+"[일반]  "+ChatColor.WHITE+"재사용 대기시간 : "+cool+"초");
+			player.sendMessage(ChatColor.AQUA+"[일반]  "+ChatColor.WHITE+"능력의 쿨타임이 "+cool+"초 남았습니다!");
 			break;
 		case 2:
-			player.sendMessage(ChatColor.RED+"[고급]  "+ChatColor.WHITE+"재사용 대기시간 : "+cool+"초");
+			player.sendMessage(ChatColor.RED+"[고급]  "+ChatColor.WHITE+"능력의 쿨타임이 "+cool+"초 남았습니다!");
 			break;
 		}
 	}
@@ -70,13 +70,13 @@ public class T_Message
 		switch(abilityCase)
 		{
 		case 0:
-			player.sendMessage(ChatColor.YELLOW+"능력을 사용하였습니다!");
+			player.sendMessage(ChatColor.YELLOW+"능력을 사용했습니다!");
 			break;
 		case 1:
-			player.sendMessage(ChatColor.AQUA+"[일반]  "+ChatColor.YELLOW+"능력을 사용하였습니다!");
+			player.sendMessage(ChatColor.AQUA+"[일반]  "+ChatColor.YELLOW+"능력을 사용했습니다!");
 			break;
 		case 2:
-			player.sendMessage(ChatColor.RED+"[고급]  "+ChatColor.YELLOW+"능력을 사용하였습니다!");
+			player.sendMessage(ChatColor.RED+"[고급]  "+ChatColor.YELLOW+"능력을 사용했습니다!");
 			break;
 		}
 	}
@@ -86,16 +86,16 @@ public class T_Message
 		switch(material)
 		{
 		case 4:
-			player.sendMessage("코블스톤이 부족합니다.");
-			player.sendMessage("필요갯수 : "+ChatColor.RED+stack);
+			player.sendMessage("조약돌이 부족합니다.");
+			player.sendMessage("필요한 개수 : "+ChatColor.RED+stack);
 			break;
 		case 5:
 			player.sendMessage("가공된 나무가 부족합니다.");
-			player.sendMessage("필요갯수 : "+ChatColor.RED+stack);
+			player.sendMessage("필요한 개수 : "+ChatColor.RED+stack);
 			break;
 		case 265:
 			player.sendMessage("철괴가 부족합니다.");
-			player.sendMessage("필요갯수 : "+ChatColor.RED+stack);
+			player.sendMessage("필요한 개수 : "+ChatColor.RED+stack);
 		}
 	}
 	
@@ -107,7 +107,7 @@ public class T_Message
 			player.sendMessage(ChatColor.RED+"대상과의 거리가 너무 멉니다.");
 			break;
 		case 1:
-			player.sendMessage(ChatColor.RED+"타겟과 거리가 너무 멉니다.");
+			player.sendMessage(ChatColor.RED+"목표와의 거리가 너무 멉니다.");
 			break;
 		}
 		

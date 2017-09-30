@@ -11,7 +11,7 @@ public class Bulter extends Ability{
 
 	private final static String[] des= {
 			"집사는 굉장히 젠틀한 능력입니다.",
-			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"억제",
+			ChatColor.YELLOW+"【패시브】 "+ChatColor.WHITE+"진정",
 			"모든 폭발을 억제합니다."};
 	
 	public Bulter(String playerName) {
